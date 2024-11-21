@@ -1,0 +1,10 @@
+.fab{
+    font-size: 40px;
+}
+.box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1/1;
+    background-color: darkseagreen;
+}
