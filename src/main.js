@@ -23,27 +23,54 @@ const boxing = document.querySelectorAll(".box")
 const boxof = []
 
 function boxClick(evt){
-  if(boxof.length === 0){
-      evt.target.classList.remove("hidden")
-      boxof.push(evt.target)
-     
-
-  } else {
-    evt.target.classList.remove("hidden")
-    boxof.push(evt.target)
-
-    if(boxof[0].innerHtml === boxof[1].innerHtml){
-        boxof.length = 0;
+    if(boxof.length === 0){
+        evt.target.classList.remove("hidden")
+        boxof.push(evt.target);
     } else {
-        boxof[0].classList.add("hidden");
-        boxof[1].classList.add("hidden");
-        boxof.length = 0;
+        evt.target.classList.remove("hidden")
+        boxof.push(evt.target)
+
+        if(boxof[0].innerHTML === boxof[1].innerHTML){
+            boxof[0].classList.add("peer")
+            boxof[1].classList.add("peer")
+            boxof.length = 0;
+    
+        } else {
+            iceAll()
+            setTimeout(function(){
+                boxof[0].classList.add("hidden");
+                boxof[1].classList.add("hidden");
+                boxof.length = 0
+                oniceAll()
+            },1000)
+        }
+
     }
-  }
+    
 }
 
-function hiddenAll(){
+
+
+function iceAll(){
+for (const box of boxing) {
+    box.classList.add("ice")
+    
+}
+}
+
+function oniceAll(){
     for (const box of boxing) {
+        box.classList.remove("ice")
+    }
+}
+
+
+
+
+
+    
+    function hiddenAll(){
+        for (const box of boxing) {
         box.classList.add("hidden")
     }
 
@@ -60,6 +87,6 @@ setTimeout(function(){
 }, 3000);
 
 for (const box of boxing){
-    box.addEventListener("click", boxClick )
+    box.addEventListener("click", boxClick)
 
 };
