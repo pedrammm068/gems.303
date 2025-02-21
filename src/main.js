@@ -1,3 +1,4 @@
+
 const root = document.getElementById("body")
 const imagesAddress = ['imges/large_cb8024b6-2830-4a2c-aac9-ade9395d47b2.webp', 'imges/large_aecce3ea-d89e-4006-89a6-2b29d3271b6f.webp',
     'imges/large_017a4268-c872-43dd-910e-6c2e8caa0300.webp', 'imges/large_7d095156-68ed-437b-80ed-2a90b689724c.webp',
@@ -20,10 +21,23 @@ imgrandom()
 
 
 const boxing = [...document.querySelectorAll(".box")]
+const er = document.querySelectorAll(".box")
 const cont = document.getElementById("co")
 const mod = document.querySelector(".modal")
+const modLos = document.querySelector(".modal-los")
 const modbg = document.querySelector(".modalbg")
 const cl = document.querySelector(".click")
+const correctScore = document.getElementById("correct")
+const losScore = document.getElementById("los")
+
+let woring = 0
+let correct = 0
+let los = 0
+function upScore() {
+    correctScore.innerHTML = correct
+ losScore.innerHTML = los
+
+}
 
  for(let i = 0; i < boxing.length ; i++){
     const rnd = Math.floor(Math.random() * boxing.length)
@@ -48,8 +62,8 @@ function boxClick(evt){
     } else {
         evt.target.classList.remove("hidden")
         boxof.push(evt.target)
-
         if(boxof[0].innerHTML === boxof[1].innerHTML){
+            correct++
             boxof[0].classList.add("peer")
             boxof[1].classList.add("peer")
             cunt += 2;
@@ -63,6 +77,14 @@ function boxClick(evt){
             boxof.length = 0;
     
         } else {
+            los++
+            woring ++
+            if(woring >= 3) {
+                setTimeout( () => {
+                    modLos.classList.remove("hidden")
+        
+                        } , 500 )
+            }
             iceAll()
             setTimeout(function(){
                 boxof[0].classList.add("hidden");
@@ -73,7 +95,7 @@ function boxClick(evt){
         }
 
     }
-    
+    upScore()
 }
 
 
