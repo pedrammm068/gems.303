@@ -34,7 +34,7 @@ let woring = 0
 let correct = 0
 let los = 0
 function upScore() {
-    correctScore.innerHTML = correct
+    correctScore.innerHTML =  correct
  losScore.innerHTML = los
 
 }
